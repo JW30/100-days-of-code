@@ -1,6 +1,7 @@
-from menu import Menu, MenuItem
+from menu import Menu
 from coffee_maker import CoffeeMaker
 from money_machine import MoneyMachine
+
 
 class CoffeeMachine:
 
@@ -23,7 +24,6 @@ class CoffeeMachine:
                     if self.coffee_maker.is_resource_sufficient(drink):
                         if self.money_machine.make_payment(drink.cost):
                             self.coffee_maker.make_coffee(drink)
-
 
 
 if __name__ == "__main__":
