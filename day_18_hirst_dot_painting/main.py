@@ -16,6 +16,7 @@ screen = Screen()
 screen.colormode(255)
 screen.bgcolor(BG_COLOR)
 
+
 def draw_hirst(window_size, dots):
     screen.setup(window_size, window_size)
     window_size -= 15
@@ -29,6 +30,7 @@ def draw_hirst(window_size, dots):
             tim.forward(dot_size * 2)
         tim.setx(x_start_pos)
         tim.sety(tim.ycor() - dot_size * 2)
+
 
 if __name__ == "__main__":
     draw_hirst(500, 5)
