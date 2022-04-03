@@ -32,7 +32,6 @@ def draw_hirst(window_size, dots):
         tim.sety(tim.ycor() - dot_size * 2)
 
 
-if __name__ == "__main__":
-    draw_hirst(500, 5)
+draw_hirst(WINDOW_SIZE, DOTS)
 
 screen.exitonclick()
