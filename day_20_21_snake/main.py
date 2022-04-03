@@ -34,14 +34,11 @@ while game_is_on:
     snake.move()
 
     if snake.is_colliding():
-        game_is_on = False
+        scoreboard.save_high_score()
+        scoreboard.reset_score()
+        snake.reset()
 
     if snake.head.distance(food) < EAT_DISTANCE:
         food.refresh(snake.segments)
         snake.add_new_segment()
         scoreboard.increase_score()
-
-scoreboard.draw_game_over()
-
-
-screen.exitonclick()

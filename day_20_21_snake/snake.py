@@ -57,3 +57,11 @@ class Snake:
 
     def is_opposite_direction(self):
         return math.fabs(self.heading - self.head.heading()) == 180
+
+    def reset(self):
+        for segment in self.segments:
+            segment.goto(1000, 1000)
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
+        self.heading = 0

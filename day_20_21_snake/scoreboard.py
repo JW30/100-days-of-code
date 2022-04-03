@@ -11,6 +11,7 @@ class Scoreboard(Turtle):
     def __init__(self):
         super().__init__()
         self.score = 0
+        self.high_score = self._get_high_score()
         self.create_scoreboard()
 
     def create_scoreboard(self):
@@ -21,15 +22,24 @@ class Scoreboard(Turtle):
         self.show_score()
 
     def show_score(self):
-        self.write(arg=f"Score: {self.score}", align=ALIGNMENT, font=FONT)
+        self.clear()
+        self.write(arg=f"Score: {self.score}" + " "*3 + f"Best: {self.high_score}", align=ALIGNMENT, font=FONT)
 
     def increase_score(self):
         self.score += 1
-        self.clear()
         self.show_score()
 
-    def draw_game_over(self):
-        self.sety(0)
-        self.write(arg=f"Game Over!", align=ALIGNMENT, font=FONT)
+    def reset_score(self):
+        self.score = 0
+        self.show_score()
 
+    @staticmethod
+    def _get_high_score():
+        with open("highscore.txt", "r") as f:
+            return int(f.read())
 
+    def save_high_score(self):
+        if self.score > self.high_score:
+            self.high_score = self.score
+            with open("highscore.txt", "w") as f:
+                f.write(str(self.high_score))
