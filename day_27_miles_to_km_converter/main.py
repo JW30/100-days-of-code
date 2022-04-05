@@ -11,7 +11,7 @@ def button_clicked():
 # Screen
 screen = Tk()
 screen.minsize(300, 150)
-screen.title("Mile to Kilometer Converter")
+screen.title("Miles to Km Converter")
 screen.grid_rowconfigure(0, weight=1)
 screen.grid_rowconfigure(4, weight=1)
 screen.grid_columnconfigure(0, weight=1)
