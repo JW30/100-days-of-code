@@ -17,8 +17,8 @@ INTERVALS_AMNT = 4
 # Variables
 mode = WORK
 secs = WORK * 60
-clock_is_active = False
 intervals_finished = 0
+timer = None
 
 
 # Logic
@@ -28,7 +28,7 @@ def switch_mode():
     window.lift()
     window.call('wm', 'attributes', '.', '-topmost', True)
     window.focus_force()
-    window.call( 'wm', 'attributes', '.', '-topmost', False)
+    window.call('wm', 'attributes', '.', '-topmost', False)
     if mode == SHORT_BREAK or mode == LONG_BREAK:
         title.config(text="Timer", fg=NAVY)
         mode = WORK
@@ -53,33 +53,29 @@ def format_secs():
 
 def update_clock():
     global secs
-    global clock_is_active
     global mode
-    if clock_is_active:
-        if secs == 0:
-            switch_mode()
-            reset_pressed()
-        else:
-            secs -= 1
-        clock.itemconfig(timer_text, text=format_secs())
-        window.after(1000, update_clock)
+    if secs == 0:
+        switch_mode()
+        reset_pressed()
+    else:
+        secs -= 1
+    clock.itemconfig(timer_text, text=format_secs())
+    global timer
+    timer = window.after(1000, update_clock)
 
 
 def start_pressed():
-    global clock_is_active
-    if clock_is_active:
-        clock_is_active = False
+    if start_btn.cget("text") == "Stop":
         start_btn.config(text="Start")
+        window.after_cancel(timer)
     else:
-        clock_is_active = True
         start_btn.config(text="Stop")
         update_clock()
 
 
 def reset_pressed():
-    global clock_is_active
     global secs
-    clock_is_active = False
+    window.after_cancel(timer)
     secs = mode * 60
     start_btn.config(text="Start")
     clock.itemconfig(timer_text, text=format_secs())
