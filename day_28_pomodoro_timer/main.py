@@ -6,7 +6,6 @@ BEIGE = "#F1DDBF"
 NAVY = "#525E75"
 GREEN = "#369B46"
 PINK = "#F8A89D"
-RED = "#F26849"
 FONT_TEXT = ("Courier", 35, "bold")
 FONT_TITLE = ("Courier", 45)
 WORK = 25
@@ -18,7 +17,7 @@ INTERVALS_AMNT = 4
 mode = WORK
 secs = WORK * 60
 intervals_finished = 0
-timer = None
+timer: str = ""
 
 
 # Logic
@@ -59,9 +58,9 @@ def update_clock():
         reset_pressed()
     else:
         secs -= 1
+        global timer
+        timer = window.after(1000, update_clock)
     clock.itemconfig(timer_text, text=format_secs())
-    global timer
-    timer = window.after(1000, update_clock)
 
 
 def start_pressed():
