@@ -9,7 +9,7 @@ PINK = "#F8A89D"
 RED = "#F26849"
 FONT_TEXT = ("Courier", 35, "bold")
 FONT_TITLE = ("Courier", 45)
-WORK = 2
+WORK = 25
 SHORT_BREAK = 5
 LONG_BREAK = 20
 INTERVALS_AMNT = 4
@@ -62,7 +62,7 @@ def update_clock():
         else:
             secs -= 1
         clock.itemconfig(timer_text, text=format_secs())
-        window.after(10, update_clock)
+        window.after(1000, update_clock)
 
 
 def start_pressed():
