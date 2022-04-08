@@ -2,23 +2,22 @@ import tkinter as tk
 from tkinter import messagebox
 import string
 import secrets
-# from password import Password
 import pyperclip
+
+EMAIL = "someone@example.com"
 
 
 class MyPassApp(tk.Tk):
 
     def __init__(self):
         super().__init__()
-        # self.pw_objects = []
-        # self.load_data()
 
         # Main Window
         self.title("Password Manager")
         self.rowconfigure(0, weight=1)
         self.rowconfigure(7, weight=1)
         self.columnconfigure(0, weight=1)
-        self.columnconfigure(6, weight=1)
+        self.columnconfigure(5, weight=1)
         self.config(padx=50, pady=50)
 
         # Canvas
@@ -43,7 +42,7 @@ class MyPassApp(tk.Tk):
         self.website_entry.focus_set()
 
         self.email_entry = tk.Entry()
-        self.email_entry.insert(0, self.get_most_common_email())
+        self.email_entry.insert(0, EMAIL)
         self.email_entry.grid(row=3, column=2, columnspan=3, sticky=tk.E + tk.W)
 
         self.pw_entry = tk.Entry(width=21, show="*")
@@ -68,7 +67,7 @@ class MyPassApp(tk.Tk):
         if pw:
             pyperclip.copy(self.pw_entry.get())
             focus = self.focus_get()
-            messagebox.showinfo(title="Copied!", message="Password copied to clipboard!")
+            messagebox.showinfo(title="Copied!", message="Password copied!")
             self.focus_set()
             focus.focus_set()
 
@@ -80,23 +79,6 @@ class MyPassApp(tk.Tk):
             self.pw_entry.config(show="*")
             self.show_hide_btn.config(text="Show")
 
-    # def load_data(self):
-    #     with open("data.txt", "r") as f:
-    #         for pw_line in f.readlines():
-    #             pw_list = pw_line.split()
-    #             pw_object = Password(pw_list[0], pw_list[1], pw_list[2])
-    #             self.pw_objects.append(pw_object)
-
-    @staticmethod
-    def get_most_common_email():
-        # if not self.pw_objects:
-        #     return ""
-        # emails = []
-        # for pw_object in self.pw_objects:
-        #     emails.append(pw_object.email)
-        # return max(set(emails), key=emails.count)
-        return "someone@example.com"
-
     def save_password(self):
         website = self.website_entry.get()
         email = self.email_entry.get()
@@ -104,8 +86,6 @@ class MyPassApp(tk.Tk):
         if website and email and pw:
             with open("data.txt", "a") as f:
                 f.write(f"{website} {email} {pw}\n")
-            # pw_object = Password(website, email, pw)
-            # self.pw_objects.append(pw_object)
             messagebox.showinfo(title=website, message="Password saved successfully!")
             self.focus_set()
             self.reset_entries()
@@ -119,7 +99,7 @@ class MyPassApp(tk.Tk):
         self.website_entry.delete(0, tk.END)
         self.website_entry.focus_set()
         self.email_entry.delete(0, tk.END)
-        self.email_entry.insert(0, self.get_most_common_email())
+        self.email_entry.insert(0, EMAIL)
         self.pw_entry.delete(0, tk.END)
 
     def generate_password(self):
