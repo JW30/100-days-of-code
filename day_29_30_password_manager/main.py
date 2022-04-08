@@ -3,6 +3,7 @@ from tkinter import messagebox
 import string
 import secrets
 import pyperclip
+import json
 
 EMAIL = "someone@example.com"
 
@@ -38,7 +39,7 @@ class MyPassApp(tk.Tk):
 
         # Entries
         self.website_entry = tk.Entry()
-        self.website_entry.grid(row=2, column=2, columnspan=3, sticky=tk.E + tk.W)
+        self.website_entry.grid(row=2, column=2, columnspan=2, sticky=tk.E + tk.W)
         self.website_entry.focus_set()
 
         self.email_entry = tk.Entry()
@@ -49,10 +50,13 @@ class MyPassApp(tk.Tk):
         self.pw_entry.grid(row=4, column=2)
 
         # Buttons
+        self.search_btn = tk.Button(text="Search", width=3, height=1, command=self.search)
+        self.search_btn.grid(row=2, column=4)
+
         self.show_hide_btn = tk.Button(text="Show", width=2, height=1, command=self.show_hide_switch)
         self.show_hide_btn.grid(row=4, column=3)
 
-        self.copy_btn = tk.Button(text="Copy", width=2, height=1, command=self.copy_pw)
+        self.copy_btn = tk.Button(text="Copy", width=3, height=1, command=self.copy_pw)
         self.copy_btn.grid(row=4, column=4)
 
         self.generate_btn = tk.Button(text="Generate Password", command=self.generate_password)
@@ -62,6 +66,26 @@ class MyPassApp(tk.Tk):
         self.save_btn.grid(row=6, column=2, columnspan=3, sticky=tk.E + tk.W)
 
     # Logic
+    def search(self) -> None:
+        website = self.website_entry.get()
+        if not website:
+            return
+        focus = self.focus_get()
+        try:
+            with open("data.json", "r") as data_file:
+                data = json.load(data_file)
+            if website in data:
+                email = data[website]["email"]
+                pw = data[website]["pw"]
+                messagebox.showinfo(title=website, message=f"Email: {email}\nPassword: {pw}")
+            else:
+                messagebox.showwarning(title="Error", message=f"No details for {website} found!")
+        except (FileNotFoundError, json.decoder.JSONDecodeError):
+            messagebox.showwarning(title="Error", message="No passwords saved yet!")
+        finally:
+            self.focus_set()
+            focus.focus_set()
+
     def copy_pw(self):
         pw = self.pw_entry.get()
         if pw:
@@ -83,9 +107,23 @@ class MyPassApp(tk.Tk):
         website = self.website_entry.get()
         email = self.email_entry.get()
         pw = self.pw_entry.get()
+        new_data = {
+            website: {
+                "email": email,
+                "pw": pw
+            }
+        }
         if website and email and pw:
-            with open("data.txt", "a") as f:
-                f.write(f"{website} {email} {pw}\n")
+            data: dict = {}
+            try:
+                with open("data.json", "r") as data_file:
+                    data = json.load(data_file)
+                    data.update(new_data)
+            except (FileNotFoundError, json.decoder.JSONDecodeError):
+                data = new_data
+            finally:
+                with open("data.json", "w") as data_file:
+                    json.dump(data, data_file, indent=4)
             messagebox.showinfo(title=website, message="Password saved successfully!")
             self.focus_set()
             self.reset_entries()
