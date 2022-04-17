@@ -2,6 +2,7 @@ from data_manager import DataManager
 from flight_search import FlightSearch
 from notification_manager import NotificationManager
 
+DataManager.populate_iata_codes()
 my_destinations: list = DataManager.get_sheet_data()
 emails: list = DataManager.get_emails()
 

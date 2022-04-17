@@ -16,7 +16,8 @@ search_params: dict = {
     "adults": "1",
     "nights_in_dst_from": "2",
     "nights_in_dst_to": "14",
-    "limit": "1"
+    "limit": "1",
+
     }
 
 headers: dict = {
@@ -27,8 +28,12 @@ headers: dict = {
 class FlightSearch:
 
     @staticmethod
-    def get_flight_data(iata: str, max_price: str) -> list:
+    def get_flight_data(iata: str, max_price: str, max_stopovers: int = 0) -> list:
         search_params["fly_to"] = iata
         search_params["price_to"] = max_price
+        search_params["max_stopovers"] = str(max_stopovers)
         response = requests.get(url=KIWI_ENDPOINT, params=search_params, headers=headers)
-        return response.json()["data"]
+        data = response.json()["data"]
+        if max_stopovers == 0 and not data:
+            data = FlightSearch.get_flight_data(iata, max_price, 1)
+        return data

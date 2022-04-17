@@ -4,8 +4,8 @@ import smtplib
 
 # Constants
 TWILIO_ACCOUNT_SID: str = "YOUR TWILIO ACCOUNT SID"
-TWILIO_AUTH_TOKEN: str = "YOUR TIWLIO AUTH TOKEN"
-TWILIO_PHONE_NUMBER: str = "YOUR VIRTUAL PHONE NUMBER"
+TWILIO_AUTH_TOKEN: str = "YOUR TWILIO AUTH TOKEN"
+TWILIO_PHONE_NUMBER: str = "YOUR VIRTUAL TWILIO PHONE NUMBER"
 VERIFIED_NUMBER: str = "YOUR PHONE NUMBER VERIFIED WITH TWILIO"
 
 MY_EMAIL: str = "someone@example.com"
@@ -26,8 +26,13 @@ class NotificationManager:
         date_from: str = route[0]["local_departure"].split("T")[0]
         date_to: str = route[1]["local_departure"].split("T")[0]
         link: str = LinkManager.shorten_url(flight_data["deep_link"])
+        addon: str = ""
+        if len(route) > 4:
+            via_cities: list = [item["cityTo"] for item in route if item["cityTo"] is not city_to]
+            via_city: str = via_cities[0]
+            addon: str = f"\n\nFlight has 1 stop over, via {via_city}"
         sms_text: str = f"Low price alert! Only {price} Euro to fly from {city_from}-{city_code_from} to " \
-                        f"{city_to}-{city_code_to}, from {date_from} to {date_to}.\nBook here: {link}"
+                        f"{city_to}-{city_code_to}, from {date_from} to {date_to}.\nBook here: {link}{addon}"
         return sms_text
 
     @staticmethod

@@ -1,6 +1,5 @@
 import requests
-
-USERS_ENDPOINT: str = "https://api.sheety.co/3e77334dd66abc624a0e070adc56239a/flightdeals/users"
+from data_manager import USERS_ENDPOINT
 
 # Get user data via console input.
 print("*** Welcome to the Flight Club!")
