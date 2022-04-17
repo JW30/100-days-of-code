@@ -6,7 +6,6 @@ from dateutil.relativedelta import relativedelta
 MY_LAT: str = "52.520008"
 MY_LON: str = "13.404954"
 KIWI_ENDPOINT: str = "https://tequila-api.kiwi.com/v2/search?"
-AFFILL_ID: str = "YOUR KIWI AFFILL ID"
 API_KEY: str = "YOUR KIWI API KEY"
 
 # Variables
@@ -15,8 +14,8 @@ search_params: dict = {
     "date_from": dt.date.today().strftime("%d/%m/%Y"),
     "date_to": (dt.date.today() + relativedelta(months=6)).strftime("%d/%m/%Y"),
     "adults": "1",
-    "nights_in_dst_from": "3",
-    "nights_in_dst_to": "7",
+    "nights_in_dst_from": "2",
+    "nights_in_dst_to": "14",
     "limit": "1"
     }
 

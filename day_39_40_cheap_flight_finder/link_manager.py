@@ -1,7 +1,7 @@
 import requests
 
 BITLY_ENDPOINT: str = "https://api-ssl.bitly.com/v4/shorten"
-TOKEN: str = "YOUR BITLY BEARER TOKEN"
+TOKEN: str = "YOUR BITLY TOKEN"
 
 
 class LinkManager:
