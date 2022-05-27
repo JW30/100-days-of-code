@@ -2,15 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Contact Me</title>
 </head>
 <body>
-<h1>Contact Me</h1>
-<ul>
-  <li>Email: someone@example.com</li>
-  <li>Mobile: +49123456789</li>
-  <li>Address: Musterstraße 21, 12345 Musterstadt</li>
-</ul>
+<h1>My Contact Details</h1>
+<table>
+    <tr>
+        <td>Email:</td>
+        <td>someone@example.com</td>
+    </tr>
+    <tr>
+        <td>Mobile:</td>
+        <td>+49123456789</td>
+    </tr>
+    <tr>
+        <td>Address:</td>
+        <td>Musterstraße 21, 12345 Musterstadt</td>
+    </tr>
+</table>
+<hr>
+<form action="mailto:wagnerxjonathan@gmail.com" method="post" enctype="text/plain" style="margin-top: 20px">
+    <label>Your Name:</label><br>
+    <input type="text" name="yourName"><br>
+    <label>Your Email:</label><br>
+    <input type="email" name="yourEmail"><br>
+    <label>Your Message:</label><br>
+    <textarea rows="8" cols="40" name="yourMessage"></textarea><br>
+    <input type="submit">
+</form>
 <p><a href="index.html">Back</a></p>
 </body>
 </html>
