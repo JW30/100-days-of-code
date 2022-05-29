@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jonathan Wagner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+<div class="my-navbar">
+    <a class="j-logo" href="index.html"><img src="images/logo.png" alt="simple logo with a J" width="46px"></a>
+    <ul class="links">
+        <li><a class="link" href="index.html">About</a></li>
+        <li><a class="link" href="index.html">Work</a></li>
+        <li><a class="link" href="#cv">CV</a></li>
+        <li><a class="link" href="index.html">Notes</a></li>
+    </ul>
+    <a href="#contact-form">
+        <button class="contact-btn" href="index.html">Contact Me</button>
+    </a>
+    <a href="https://github.com/JW30"><img class="git-logo" src="images/octocat.png" height="37px"
+                                           alt="github logo"></a>
+</div>
+<div class="header">
+    <div class="clouds-and-text">
+        <img class="cloud-right" src="images/cloud.png" alt="cloud">
+        <div class="heading-text">
+            <h1>I'm Jonathan.</h1>
+            <p class="heading-slogan">A Python Developer.</p>
+        </div>
+        <img class="cloud-left" src="images/cloud.png" alt="cloud">
+    </div>
+    <img class="mountain" src="images/mountain.png" alt="mountain">
+</div>
+<div id="cv" class="section white-bg">
+    <div class="flex-section">
+        <div class="inline-block left">
+            <h2>Education</h2>
+            <table cellspacing="10px">
+                <tr>
+                    <td>2021-present</td>
+                    <td><strong>Philipps-University Marburg</strong> MSc Business Informatics</td>
+                </tr>
+                <tr>
+                    <td>2022-2023</td>
+                    <td><strong>UPC Barcelona</strong> Erasmus</td>
+                </tr>
+                <tr>
+                    <td>2016-2021</td>
+                    <td><strong>Philipps-University Marburg</strong> BSc Business Administration</td>
+                </tr>
+                <tr>
+                    <td>2015</td>
+                    <td><strong>IGS Ludwigshafen-Oggersheim</strong> A-levels</td>
+                </tr>
+            </table>
+        </div>
+        <img src="images/studying.png" width="200px">
+    </div>
+</div>
+<div class="white-bg"><hr></div>
+<div class="section white-bg">
+    <div class="flex-section">
+        <img src="images/worker.png" width="200px">
+        <div class="inline-block right">
+            <h2>Work Experience</h2>
+            <table cellspacing="10px">
+                <tr>
+                    <td>2019-2021</td>
+                    <td><strong>Student Assistant, BAHAG AG, E-Commerce, Mannheim</strong></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>
+<div class="white-bg"><hr></div>
+<div class="section white-bg">
+    <h2>Skills</h2>
+    <div class="skill-bars">
+        <p class="skill-heading">Python</p>
+        <div class="skill-bar">
+            <div class="skill-percentage python">80%</div>
+        </div>
+        <p class="skill-heading">Java</p>
+        <div class="skill-bar">
+            <div class="skill-percentage java">60%</div>
+        </div>
+        <p class="skill-heading">HTML5</p>
+        <div class="skill-bar">
+            <div class="skill-percentage html">40%</div>
+        </div>
+        <p class="skill-heading">CSS</p>
+        <div class="skill-bar">
+            <div class="skill-percentage css">40%</div>
+        </div>
+    </div>
+</div>
+<div id="contact-form" class="section">
+    <h2>Contact</h2>
+    <form action="mailto:wagnerxjonathan@gmail.com" method="post" enctype="text/plain">
+        <label for="fname">Name</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+        <label for="lname">Email</label>
+        <input type="text" id="lname" name="lastname" placeholder="Your email..">
+
+        <label for="subject">Message</label>
+        <textarea id="subject" name="message" placeholder="Write something.." style="height:200px"></textarea>
+        <div class="center">
+            <input class="submit" type="submit" value="Submit">
+        </div>
+    </form>
+
+</div>
+<div class="footer">
+    <p>&#169; 2022 Jonathan Wagner</p>
+</div>
+</body>
+</html>

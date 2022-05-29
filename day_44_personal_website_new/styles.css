@@ -1,0 +1,242 @@
+/************************ TAG SELECTORS ************************/
+
+body {
+    background-color: #F5F5F5;
+    color: #2a2a2d;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4.375rem;
+    margin: 0.2em 0.5em 0.5em 0.5em;
+}
+
+h2 {
+    font-size: 1.875rem;
+}
+
+ul {
+    padding: 0;
+}
+
+li {
+    display: inline;
+    margin: 0 21px 0 21px;
+}
+
+form {
+    width: 50%;
+    margin: auto;
+    text-align: left;
+}
+
+input[type=text], textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 20px;
+    resize: none;
+}
+
+table {
+    text-align: left;
+    display: inline-block;
+    margin: auto;
+}
+
+hr {
+    border-style: dotted none none;
+    border-width: 6px;
+    color: #9D9D9D;
+    background-color: white;
+    width: 4%;
+    display: inline-block;
+}
+
+/************************ CLASS SELECTORS ************************/
+
+.my-navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto 125px auto;
+    width: 75%;
+}
+
+.j-logo {
+    margin: 0 21px 0 21px;
+}
+
+.links {
+    margin: 0 21px 0 21px;
+    font-weight: bold;
+}
+
+.link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 2px;
+
+    /*add those for opera and mozilla support*/
+    -webkit-text-decoration-color: transparent;
+    -moz-text-decoration-color: transparent;
+
+    transition-duration: 0.2s;
+}
+
+.link:hover {
+    text-decoration-color: #30475E;
+
+    /*add those for opera and mozilla support*/
+    -webkit-text-decoration-color: transparent;
+    -moz-text-decoration-color: transparent;
+}
+
+.contact-btn {
+    float: right;
+    margin: 0 21px 0 21px;
+    background-color: #30475E;
+    border-radius: 40px;
+    border-style: none;
+    color: white;
+    cursor: pointer;
+    transition-duration: .2s;
+    padding: 12px 18px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.contact-btn:hover {
+    background-color: #446586;
+    box-shadow: 3px 2px 11px rgba(43, 43, 45, 0.29);
+}
+
+.git-logo {
+    margin: 0 21px 0 21px;
+    vertical-align: middle;
+}
+
+.header {
+    color: #F05454;
+}
+
+.cloud-right {
+    margin-right: 30px;
+    vertical-align: bottom;
+}
+
+.heading-text {
+    display: inline-block;
+}
+
+.heading-slogan {
+    margin: 0 0 30px;
+    font-size: 1.5rem;
+}
+
+.cloud-left {
+    margin-left: 30px;
+    vertical-align: top;
+}
+
+.mountain {
+    margin-top: 40px;
+}
+
+.section {
+    padding: 50px 0 75px 0;
+}
+
+.white-bg {
+    background-color: white;
+}
+
+.flex-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.left {
+    margin-right: 40px;
+}
+
+.right {
+    margin-left: 40px;
+}
+
+.skill-bars {
+    width: 50%;
+    margin: auto auto 25px;
+}
+
+.skill-heading {
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.skill-bar {
+    background-color: #ddd;
+}
+
+.skill-percentage {
+    text-align: right;
+    padding: 10px 2% 10px 0;
+    color: white;
+}
+
+.python {
+    width: 78%;
+    background-color: #293462
+}
+
+.java {
+    width: 58%;
+    background-color: #F24C4C;
+}
+
+.html {
+    width: 38%;
+    background-color: #EC9B3B;
+}
+
+.css {
+    width: 38%;
+    background-color: #F7D716;
+}
+
+.center {
+    text-align: center;
+}
+
+.submit {
+    background-color: #F05454;
+    border-radius: 8px;
+    border-style: none;
+    color: white;
+    cursor: pointer;
+    transition-duration: .2s;
+    padding: 12px 30px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+}
+
+.submit:hover {
+    background-color: #fd5656;
+    box-shadow: 3px 2px 11px rgba(43, 43, 45, 0.29);
+}
+
+.footer {
+    background-color: #30475E;
+    padding: 25px 0 25px 0;
+}
