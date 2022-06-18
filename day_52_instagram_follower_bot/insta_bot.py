@@ -71,11 +71,14 @@ class InstaBot(webdriver.Chrome):
         self.find_element(
             by=By.XPATH, value='/html/body/div[1]/div/div[1]/div/div[2]/div/div/div[1]/div/div[2]/div').click()
 
+    def like_and_follow_images(self, amount: int):
+        for x in range(amount):
+            current_xpath: str = f"/html/body/div[1]/div/div[1]/div/div[1]/div/div/div[1]" \
+                                 f"/div[1]/section/main/article/div[2]/div/div[{(x // 3) + 1}]/div[{(x % 3) + 1}]/a"
+            self.like_and_follow_image(xpath=current_xpath)
+
 
 bot = InstaBot()
 bot.log_in()
 bot.search_for_hashtag(hashtag=HASHTAG)
-for x in range(100):
-    current_xpath: str = f"/html/body/div[1]/div/div[1]/div/div[1]/div/div/div[1]" \
-                         f"/div[1]/section/main/article/div[2]/div/div[{(x // 3) + 1}]/div[{(x % 3) + 1}]/a"
-    bot.like_and_follow_image(xpath=current_xpath)
+bot.like_and_follow_images(amount=100)
