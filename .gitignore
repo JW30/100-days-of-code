@@ -4,4 +4,5 @@
 **/.DS_Store
 /.idea/
 *.pyc
-playground.py
+keys.py
+day_46_spotify_time_machine/.cache
